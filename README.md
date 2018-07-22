@@ -42,7 +42,8 @@ core> (r/replace-randomly {:a 1 :b 2 :c 3} 2 :surprise)
 ### `update-randomly`
 
 ```clojure
-(require '[clojure.string :as str])
+core> (require '[clojure.string :as str])
+nil
 core> (r/update-randomly ["the" "quick" "brown" "fox"] 2 str/reverse)
 ["the" "kciuq" "brown" "xof"]
 
