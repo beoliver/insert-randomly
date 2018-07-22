@@ -25,14 +25,15 @@
 
 (defn update-randomly
   "call `update` with `f` at `n` random positions in `xs`.
-  Works for both vetcors and maps.
+  Works for both sequences and maps.
   If `xs` is a map then f is applied to the values of `n` random keys.
   Never uses the same index or key twice."
   ([xs f] (update-randomly xs 1 f))
   ([xs n f]
-   (reduce (fn [xs k] (update xs k f))
-           xs
-           (take n (shuffle (if (map? xs) (keys xs) (range (count xs))))))))
+   (as-> (if (map? xs) xs (vec xs)) $
+     (reduce (fn [xs k] (update xs k f))
+             $
+             (take n (shuffle (if (map? $) (keys xs) (range (count $)))))))))
 
 (defn replace-randomly
   "Replace the values at `n` random indicies with `x` in `xs`.
@@ -40,13 +41,3 @@
   Never users the same key or index twice."
   ([xs x] (replace-randomly xs 1 x))
   ([xs n x] (update-randomly xs n (constantly x))))
-
-;; (defn update-randomly
-;;   "call `update` with `f` and any supplied `args` at `n` random positions in `xs`.
-;;   Works for both vetcors and maps.
-;;   If `xs` is a map then f is applied to the values of `n` random keys.
-;;   Never uses the same index or key twice."
-;;   [xs n f & args]
-;;   (reduce (fn [xs k] (apply update xs k f args))
-;;           xs
-;;           (take n (shuffle (if (map? xs) (keys xs) (range (count xs)))))))

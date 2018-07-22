@@ -50,4 +50,9 @@ core> (r/update-randomly ["the" "quick" "brown" "fox"] 2 str/reverse)
 ;; again - we can use it with maps
 core> (r/update-randomly {:the "the" :quick "quick" :brown "brown" :fox "fox"} 2 str/reverse)
 {:the "the", :quick "quick", :brown "nworb", :fox "xof"}
+
+;; if you pass a list it will be converted into a vector
+;; this is so we can use `update` internally
+core> (update-randomly (list 1 2 3 4 5) (constantly :foo))
+[1 2 3 :foo 5]
 ```
