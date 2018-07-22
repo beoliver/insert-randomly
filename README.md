@@ -2,6 +2,8 @@
 
 When you you want to spice up your data
 
+[![Clojars Project](https://img.shields.io/clojars/v/beoliver/insert-randomly.svg)](https://clojars.org/beoliver/insert-randomly)
+
 ## Usage
 
 ```clojure
