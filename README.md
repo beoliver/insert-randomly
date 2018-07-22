@@ -33,6 +33,7 @@ core> (r/replace-randomly [1 2 3 4 5] :ok)
 [1 :ok 3 4 5]
 core> (r/replace-randomly [1 2 3 4 5] 20 :ok)
 [:ok :ok :ok :ok :ok]
+
 ;; also works with maps
 core> (r/replace-randomly {:a 1 :b 2 :c 3} 2 :surprise)
 {:a 1, :b :surprise, :c :surprise}
@@ -42,8 +43,9 @@ core> (r/replace-randomly {:a 1 :b 2 :c 3} 2 :surprise)
 
 ```clojure
 (require '[clojure.string :as str])
-.core> (r/update-randomly ["the" "quick" "brown" "fox"] 2 str/reverse)
+core> (r/update-randomly ["the" "quick" "brown" "fox"] 2 str/reverse)
 ["the" "kciuq" "brown" "xof"]
+
 ;; again - we can use it with maps
 core> (r/update-randomly {:the "the" :quick "quick" :brown "brown" :fox "fox"} 2 str/reverse)
 {:the "the", :quick "quick", :brown "nworb", :fox "xof"}
