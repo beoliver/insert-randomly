@@ -53,6 +53,6 @@ core> (r/update-randomly {:the "the" :quick "quick" :brown "brown" :fox "fox"} 2
 
 ;; if you pass a list it will be converted into a vector
 ;; this is so we can use `update` internally
-core> (update-randomly (list 1 2 3 4 5) (constantly :foo))
+core> (r/update-randomly (list 1 2 3 4 5) (constantly :foo))
 [1 2 3 :foo 5]
 ```
